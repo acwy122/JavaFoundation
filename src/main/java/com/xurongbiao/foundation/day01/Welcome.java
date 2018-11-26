@@ -6,5 +6,6 @@ public class Welcome {
 		System.out.println("Hello World !");
 		System.out.println("test eclipse commit and push !");
 		System.out.println("OK,commit test and push test it's success,I Love Java !");
+		System.out.println("Now let's start coding !");
 	}
 }
