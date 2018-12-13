@@ -17,6 +17,7 @@ import java.io.InputStream;
  * 5、反复十遍
  */
 public class IO_test01 {
+	private static int ticket_count;
 	public static void main(String[] args) {
 		//创建源
 		File src = new File("src/main/webapp/common/iotest01file/abc.txt");
@@ -54,6 +55,14 @@ public class IO_test01 {
 		again.ioTest09();
 		again.ioTest10();
 		again.ioTest11();
+		again.ioSutratest();
+		
+	}
+	public static int getTicket_count() {
+		return ticket_count;
+	}
+	public static void setTicket_count(int ticket_count) {
+		IO_test01.ticket_count = ticket_count;
 	}
 	public void ioTest02() {
 		//创建源
@@ -334,5 +343,41 @@ public class IO_test01 {
 				e.printStackTrace();
 			}
 		}
+	}
+	/**
+	 * 这个是java中经典的io流操作
+	 * 一定要掌握
+	 */
+	public void ioSutratest() {
+		System.out.println("这个是java中经典的io流操作，一定要熟练掌握！");
+		//创建源
+		File src = new File("src/main/webapp/common/iotest01file/abc.txt");
+		//选择源
+		InputStream is = null;
+		try {
+			is = new FileInputStream(src);
+			//操作流
+			StringBuilder sb  = new StringBuilder();
+			int temp;
+			while((temp = is.read()) != -1) {
+				sb.append((char)temp);
+			}
+			System.out.println(sb);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally {
+			//释放资源
+			try {
+				//这种写法，保证了即使遇到异常情况，也会关闭对象
+				if(is != null) {
+					is.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
 }
